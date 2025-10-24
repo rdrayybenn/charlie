@@ -1,4 +1,4 @@
-# HBD - Ride Booking Platform (Django)
+# Ride - Ride Booking Platform (Django)
 
 This repository contains a Django-based ride booking platform with three main apps: `accounts`, `rides`, and `dashboard`.
 
