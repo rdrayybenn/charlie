@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>Profile</h2>
+  <p><strong>Username:</strong> {{ user.username }}</p>
+  <p><strong>Name:</strong> {{ user.first_name }} {{ user.middle_name }} {{ user.last_name }}</p>
+  <p><strong>Role:</strong> {{ user.user_role }}</p>
+  <p><strong>Balance:</strong> {{ user.balance }}</p>
+
+  {% if user.user_role == 'customer' %}
+    <h3>Your Rides</h3>
+    <ul class="list-group">
+      {% for ride in user.rides_as_customer.all %}
+        <li class="list-group-item"><a href="{% url 'rides:ride_detail' ride.pk %}">Ride #{{ ride.pk }} - {{ ride.status }}</a></li>
+      {% empty %}
+        <li class="list-group-item">No rides yet</li>
+      {% endfor %}
+    </ul>
+  {% elif user.user_role == 'rider' %}
+    <h3>Total Distance Travelled</h3>
+    {% with total=0 %}{% for r in user.rides_as_rider.filter(status='dropped') %}{% widthratio r.total_distance 1 1 as dist %}{% templatetag openbrace %}{% endfor %}{% endwith %}
+    <!-- Simple list of completed rides -->
+    <ul class="list-group mt-2">
+      {% for ride in user.rides_as_rider.filter(status='dropped') %}
+        <li class="list-group-item">Ride #{{ ride.pk }} - {{ ride.total_distance }} km - {{ ride.created_at.date }}</li>
+      {% empty %}
+        <li class="list-group-item">No completed rides yet</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+{% endblock %}

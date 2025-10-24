@@ -1,0 +1,8 @@
+/* Placeholder Bootstrap CSS - replace with the official bootstrap.min.css file for full styling.
+   Download the Bootstrap distribution and place bootstrap.min.css here: static/bootstrap/css/bootstrap.min.css */
+body { padding-top: 1rem; }
+.container { max-width: 960px; }
+.btn { display: inline-block; padding: .5rem 1rem; border-radius: .25rem; }
+.alert { padding: .5rem 1rem; border-radius: .25rem; margin-bottom: 1rem; }
+.list-group { padding-left: 0; }
+.list-group-item { padding: .5rem 1rem; border: 1px solid #ddd; margin-bottom: .25rem; }

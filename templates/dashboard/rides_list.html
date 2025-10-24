@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>All Rides</h2>
+  <ul class="list-group">
+    {% for r in rides %}
+      <li class="list-group-item"><a href="{% url 'rides:ride_detail' r.pk %}">Ride #{{ r.pk }}</a> — {{ r.status }} — {{ r.price }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

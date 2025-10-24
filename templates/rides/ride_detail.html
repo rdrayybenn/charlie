@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>Ride #{{ object.pk }}</h2>
+  <p><strong>Customer:</strong> {{ object.customer }}</p>
+  <p><strong>Rider:</strong> {{ object.rider }}</p>
+  <p><strong>Pickup:</strong> {{ object.pickup_location }}</p>
+  <p><strong>Destination:</strong> {{ object.destination }}</p>
+  <p><strong>Distance:</strong> {{ object.total_distance }} km</p>
+  <p><strong>Price:</strong> {{ object.price }}</p>
+  <p><strong>Status:</strong> {{ object.status }}</p>
+
+  {% if request.user == object.customer and not object.rider %}
+    <a class="btn btn-primary" href="{% url 'rides:ride_update' object.pk %}">Edit</a>
+    <a class="btn btn-danger" href="{% url 'rides:ride_delete' object.pk %}">Delete</a>
+  {% endif %}
+
+  {% if request.user.user_role == 'rider' and object.status == 'created' %}
+    <form method="post" action="{% url 'rides:ride_update' object.pk %}">
+      {% csrf_token %}
+      <input type="hidden" name="status" value="assigned">
+      <button class="btn btn-success" type="submit">Accept Ride</button>
+    </form>
+  {% endif %}
+
+  <h3 class="mt-4">Events</h3>
+  <ul class="list-group">
+    {% for e in object.events.all %}
+      <li class="list-group-item">Step {{ e.step_count }} — {{ e.description }} <small class="text-muted">({{ e.created_at }})</small></li>
+    {% empty %}
+      <li class="list-group-item">No events</li>
+    {% endfor %}
+  </ul>
+
+  <a class="btn btn-secondary mt-3" href="{% url 'rides:ride_list' %}">Back to list</a>
+{% endblock %}

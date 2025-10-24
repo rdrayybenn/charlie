@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Home - HBD{% endblock %}
+{% block content %}
+  <div class="p-4 bg-light rounded">
+    <h1>Welcome to HBD</h1>
+    {% if user.is_authenticated %}
+      <p>Hi {{ user.first_name }} ({{ user.user_role }})</p>
+      <a class="btn btn-primary" href="{% url 'rides:ride_list' %}">View Rides</a>
+    {% else %}
+      <p>Please sign in or create an account.</p>
+      <a class="btn btn-primary" href="{% url 'accounts:signup' %}">Sign up</a>
+    {% endif %}
+  </div>
+{% endblock %}

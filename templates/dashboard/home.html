@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>Staff Dashboard</h2>
+  <div class="list-group">
+    <a class="list-group-item" href="{% url 'dashboard:rides_list' %}">All Rides</a>
+    <a class="list-group-item" href="{% url 'dashboard:users_list' %}">All Users</a>
+    <a class="list-group-item" href="{% url 'dashboard:add_balance' %}">Add Balance</a>
+  </div>
+{% endblock %}

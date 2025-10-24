@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>Delete Ride #{{ object.pk }}</h2>
+  <p>Are you sure you want to delete this ride?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button class="btn btn-danger" type="submit">Yes, delete</button>
+    <a class="btn btn-secondary" href="{% url 'rides:ride_detail' object.pk %}">Cancel</a>
+  </form>
+{% endblock %}

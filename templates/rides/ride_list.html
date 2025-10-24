@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>Rides</h2>
+  <a class="btn btn-success mb-3" href="{% url 'rides:ride_create' %}">Book a Ride</a>
+  <div class="list-group">
+    {% for ride in object_list %}
+      <a class="list-group-item list-group-item-action" href="{% url 'rides:ride_detail' ride.pk %}">
+        Ride #{{ ride.pk }} - {{ ride.status }} - {{ ride.price }}
+      </a>
+    {% empty %}
+      <p>No rides found.</p>
+    {% endfor %}
+  </div>
+{% endblock %}
