@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
-{% block title %}Home - HBD{% endblock %}
+{% block title %}Home - Ride{% endblock %}
 {% block content %}
   <div class="p-4 bg-light rounded">
-    <h1>Welcome to HBD</h1>
+  <h1>Welcome to Ride</h1>
     {% if user.is_authenticated %}
       <p>Hi {{ user.first_name }} ({{ user.user_role }})</p>
       <a class="btn btn-primary" href="{% url 'rides:ride_list' %}">View Rides</a>

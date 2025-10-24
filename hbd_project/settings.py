@@ -31,7 +31,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'hbd_project.urls'
+ROOT_URLCONF = 'ride_project.urls'
 
 TEMPLATES = [
     {
@@ -49,7 +49,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'hbd_project.wsgi.application'
+WSGI_APPLICATION = 'ride_project.wsgi.application'
 
 DATABASES = {
     'default': {

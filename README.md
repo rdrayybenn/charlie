@@ -44,7 +44,7 @@ python manage.py createsuperuser
 ```
 
 Deployment notes:
-- This README includes guidance to deploy to Heroku, Render, Railway, or similar providers. For AWS S3 static hosting, configure `django-storages` with boto3 and set `STATICFILES_STORAGE` to use S3Boto3Storage. See `hbd_project/settings.py` for placeholders.
+- This README includes guidance to deploy to Heroku, Render, Railway, or similar providers. For AWS S3 static hosting, configure `django-storages` with boto3 and set `STATICFILES_STORAGE` to use S3Boto3Storage. See `ride_project/settings.py` for placeholders.
 
 What remains / next steps:
 - Implement full UI flows and validations as required by the assignment (this scaffold provides a working foundation).
